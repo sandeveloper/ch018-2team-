@@ -10,11 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.annotations.OnDelete;
 
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="BooksInUse")
@@ -25,11 +26,12 @@ public class BooksInUse implements Serializable {
         @Column(name = "id")
         private int id;
         
-        @ManyToOne(targetEntity = Person.class)
+        
+        @ManyToOne()//targetEntity = Person.class)
         @JoinColumn(name = "pid", referencedColumnName = "pid")
         private Person person;
         
-        @ManyToOne(targetEntity = Book.class)
+        @ManyToOne()//targetEntity = Book.class)
         @JoinColumn(name = "bid", referencedColumnName = "bid")
         private Book book;
 
@@ -87,6 +89,7 @@ public class BooksInUse implements Serializable {
         public void setReturnDate(Date returnDate) {
             this.returnDate = returnDate;
         }
+        
 
        
 

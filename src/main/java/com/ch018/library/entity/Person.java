@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,7 +17,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.ForeignKey;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 /**
  *
@@ -42,10 +48,7 @@ public class Person implements Serializable {
     @Column(name = "password")
     private String password;
     
-    @ManyToOne()
-    @JoinColumn(name = "rid")
-    private PersonRole role;
-   
+    //!!!!Role
     
     @Column(name = "cellphone")
     private String cellphone;
@@ -147,13 +150,6 @@ public class Person implements Serializable {
         this.sms = sms;
     }
 
-    public PersonRole getRole() {
-        return role;
-    }
-
-    public void setRole(PersonRole role) {
-        this.role = role;
-    }
 
 
     public int getTimelyReturn() {
@@ -203,6 +199,11 @@ public class Person implements Serializable {
     public void setBooksInUse(Set<Book> booksInUse) {
         this.booksInUse = booksInUse;
     }
+    
+    
+    
+
+   
 
     
     

@@ -32,10 +32,14 @@ public class NewClass {
         Book book2 = new Book();
         book2.setTitle("Ruby");
         
+        person.getBooksInUse().add(book);
+        person.getBooksInUse().add(book2);
+        
         BooksInUse bis = new BooksInUse();
         bis.setPerson(person);
         bis.setBook(book);
         bis.setIssueDate(new Date());
+        
         
         BooksInUse bis1 = new BooksInUse();
         bis1.setPerson(person);
@@ -45,18 +49,27 @@ public class NewClass {
         try{
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(person);
+            
             session.save(book);
             session.save(book2);
             
+            session.save(person);
+            
+            
             session.save(bis);
             session.save(bis1);
+            //session.getTransaction().commit();
+            
+            
+            //session.beginTransaction();
+            
+            session.delete(bis1);
+            
             session.getTransaction().commit();
         }catch(Exception e){
             System.out.println(e);
         }finally{
-            session.close()
-                    ;
+            session.close();
         }
                
         
