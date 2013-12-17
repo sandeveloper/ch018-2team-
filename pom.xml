@@ -25,16 +25,11 @@
       <artifactId>log4j-core-osgi-reduced</artifactId>
       <version>2.0-beta9</version>
     </dependency>
-    <dependency>
-	  <groupId>org.hibernate</groupId>
-	  <artifactId>hibernate</artifactId>
-	  <version>3.2.5.ga</version>
-	 </dependency>
-	 <dependency>
-	  <groupId>org.hibernate</groupId>
-	  <artifactId>hibernate-entitymanager</artifactId>
-	  <version>3.3.2.GA</version>
-         </dependency>
+	  <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-core</artifactId>
+          <version>4.2.7.SP1</version>
+    </dependency>
     
     <dependency>
 	  <groupId>mysql</groupId>
@@ -67,31 +62,12 @@
       <artifactId>jstl</artifactId>
       <version>1.2</version>
  	</dependency>
- 	<dependency>
-      <groupId>org.javassist</groupId>
-      <artifactId>javassist</artifactId>
-      <version>3.18.0-GA</version>
-    </dependency>
-  <dependency>
-	  <groupId>org.springframework</groupId>
-	  <artifactId>spring-orm</artifactId>
-	  <version>3.2.5.RELEASE</version>
-  </dependency>
-  <dependency>
-      <groupId>javax.transaction</groupId>
-      <artifactId>jta</artifactId>
-      <version>1.1</version>
-    </dependency>
+ 
   </dependencies>
   <build>
     <finalName>library</finalName>
 	<plugins>
-     	<plugin>
-	  		<groupId>org.apache.tomcat.maven</groupId>
-	  		<artifactId>tomcat7-maven-plugin</artifactId>
-	  		<version>2.2</version>
-
-		</plugin>
+     	
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-compiler-plugin</artifactId>

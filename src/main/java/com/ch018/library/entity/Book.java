@@ -1,6 +1,7 @@
 package com.ch018.library.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -20,17 +22,41 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name="books")
 public class Book implements Serializable{
 	
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
 	private int id;
+        
+        @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="bcid", nullable = false)
 	private Bookcase bookcase;
+        
+        @Column(name="title")
 	private String title;
+        
+        @Column(name="authors")
 	private String authors;
+        
+        @Column(name="year_public")
 	private int year;
+        
+        @Column(name="publication")
 	private String publication;
+        
+        @Column(name="pages")
 	private int pages;
+        
+        @Column(name="description")
 	private String description;
+        
+        @Column(name="shelf")
 	private int shelf;
+        
+        @Column(name="term")
 	private int term;
-	private Person person;
+        
+        @OneToMany(targetEntity = BooksInUse.class, mappedBy = "book")
+	private Set<Person> personsUse;
 	
 	public Book() {
 		
@@ -40,65 +66,55 @@ public class Book implements Serializable{
 		title = b.getTitle();
 	}
 	
-	
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", unique = true, nullable = false)
+
 	public int getId() {
 		return this.id;
 	}
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="bcid", nullable = false)
+	
 	public Bookcase getBookcase() {
 		return this.bookcase;
 	}
 	
-	@Column(name="title")
+	
 	public String getTitle() {
 		return title;
 	}
 	
-	@Column(name="authors")
+	
 	public String getAuthors() {
 		return authors;
 	}
 	
-	@Column(name="year_public")
+	
 	public int getYear() {
 		return year;
 	}
 	
-	@Column(name="publication")
+	
 	public String getPublication() {
 		return publication;
 	}
 	
-	@Column(name="pages")
+	
 	public int getPages() {
 		return pages;
 	}
 	
-	@Column(name="description")
+	
 	public String getDescription() {
 		return description;
 	}
 	
-	@Column(name="shelf")
+	
 	public int getShelf() {
 		return shelf;
 	}
 	
-	@Column(name="term")
+	
 	public int getTerm() {
 		return term;
-	}
-	
-	/*@ManyToOne
-	@JoinTable(name="BooksInUse", joinColumns = @JoinColumn(name="Books_id"), inverseJoinColumns = @JoinColumn(name="Person_id"))
-	public Person getPerson() {
-		return person;
-	}*/
+        }
 	
 	
 	public void setId(int id) {
@@ -140,6 +156,16 @@ public class Book implements Serializable{
 	public void setTerm(int term) {
 		this.term = term;
 	}
+
+    public Set<Person> getPersonsUse() {
+        return personsUse;
+    }
+
+    public void setPersonsUse(Set<Person> personsUse) {
+        this.personsUse = personsUse;
+    }
+        
+        
 	
 	@Override
 	public boolean equals(Object obj) {

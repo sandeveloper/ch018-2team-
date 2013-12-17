@@ -5,9 +5,13 @@
 package com.ch018.library.main;
 
 import com.ch018.library.dao.PersonDaoImpl;
-import com.ch018.library.dao.RatingDaoImpl;
+import com.ch018.library.entity.Book;
+import com.ch018.library.entity.BooksInUse;
 import com.ch018.library.entity.Person;
-import com.ch018.library.entity.Rating;
+import com.ch018.library.util.HibernateUtil;
+import java.util.Date;
+import org.hibernate.Session;
+
 
 /**
  *
@@ -17,22 +21,44 @@ public class NewClass {
     
     public static void main(String[] args) {
         
-        PersonDaoImpl pdao = new PersonDaoImpl();
-        RatingDaoImpl rdao = new RatingDaoImpl();
+      
+        Session session = null;
         
-        Person p = new Person("gmail.com");
-        Person p1 = new Person("mail.ru");
+        Person person = new Person("gmail.com");
+         
+        Book book = new Book();
+        book.setTitle("Java");
         
-        Rating r = new Rating();
+        Book book2 = new Book();
+        book2.setTitle("Ruby");
         
-        r.setGeneralRating(5F);
+        BooksInUse bis = new BooksInUse();
+        bis.setPerson(person);
+        bis.setBook(book);
+        bis.setIssueDate(new Date());
         
-        p.setRating(r);
-        r.setPerson(p);
-       
+        BooksInUse bis1 = new BooksInUse();
+        bis1.setPerson(person);
+        bis1.setBook(book2);
+        bis1.setIssueDate(new Date());
         
-        //pdao.save(p);
-        rdao.save(r);
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.save(person);
+            session.save(book);
+            session.save(book2);
+            
+            session.save(bis);
+            session.save(bis1);
+            session.getTransaction().commit();
+        }catch(Exception e){
+            System.out.println(e);
+        }finally{
+            session.close()
+                    ;
+        }
+               
         
         
         

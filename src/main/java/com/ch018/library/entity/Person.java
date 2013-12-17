@@ -1,6 +1,8 @@
 package com.ch018.library.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,7 +28,7 @@ public class Person implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int pid;
     
     @Column(name = "name")
     private String name;
@@ -44,8 +46,6 @@ public class Person implements Serializable {
     @JoinColumn(name = "rid")
     private PersonRole role;
    
-    @OneToOne(mappedBy = "person")
-    private Rating rating;
     
     @Column(name = "cellphone")
     private String cellphone;
@@ -56,6 +56,24 @@ public class Person implements Serializable {
     @Column(name = "sms")
     private boolean sms;
     
+    @Column(name = "timelyreturn")
+    private int timelyReturn;
+    
+    @Column(name = "untimelyreturn")
+    private int untimekyReturn;
+    
+    @Column(name = "booksallowed")
+    private int booksAllowed;
+    
+    @Column(name = "failedorders")
+    private int failedOrders;
+    
+    @Column(name = "generalratio")
+    private float generalRating;
+    
+    @OneToMany(targetEntity = BooksInUse.class, mappedBy = "person")
+    private Set<Book> booksInUse = new HashSet<>();
+    
     
     public Person() {
         
@@ -65,12 +83,12 @@ public class Person implements Serializable {
         this.email = email;
     }
 
-    public int getId() {
-        return id;
+    public int getPid() {
+        return pid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPid(int id) {
+        this.pid = id;
     }
 
     public String getName() {
@@ -137,12 +155,53 @@ public class Person implements Serializable {
         this.role = role;
     }
 
-    public Rating getRating() {
-        return rating;
+
+    public int getTimelyReturn() {
+        return timelyReturn;
     }
 
-    public void setRating(Rating rating) {
-        this.rating = rating;
+    public void setTimelyReturn(int timelyReturn) {
+        this.timelyReturn = timelyReturn;
+    }
+
+    public int getUntimekyReturn() {
+        return untimekyReturn;
+    }
+
+    public void setUntimekyReturn(int untimekyReturn) {
+        this.untimekyReturn = untimekyReturn;
+    }
+
+    public int getBooksAllowed() {
+        return booksAllowed;
+    }
+
+    public void setBooksAllowed(int booksAllowed) {
+        this.booksAllowed = booksAllowed;
+    }
+
+    public int getFailedOrders() {
+        return failedOrders;
+    }
+
+    public void setFailedOrders(int failedOrders) {
+        this.failedOrders = failedOrders;
+    }
+
+    public float getGeneralRating() {
+        return generalRating;
+    }
+
+    public void setGeneralRating(float generalRating) {
+        this.generalRating = generalRating;
+    }
+
+    public Set<Book> getBooksInUse() {
+        return booksInUse;
+    }
+
+    public void setBooksInUse(Set<Book> booksInUse) {
+        this.booksInUse = booksInUse;
     }
 
     
@@ -158,7 +217,7 @@ public class Person implements Serializable {
     
     @Override
     public String toString() {
-        return this.id + " " + " " + email;
+        return this.pid + " " + " " + email;
     }
 
 }

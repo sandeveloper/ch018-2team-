@@ -4,7 +4,7 @@
  */
 package com.ch018.library.dao;
 
-import com.ch018.library.dao.util.HibernateUtil;
+import com.ch018.library.util.HibernateUtil;
 import com.ch018.library.entity.PersonRole;
 import java.util.ArrayList;
 import java.util.List;

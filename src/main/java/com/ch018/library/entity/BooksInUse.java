@@ -1,60 +1,94 @@
 package com.ch018.library.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="BooksInUse")
-public class BooksInUse {
-	private int id;
-	private int personId;
-	private int booksId;
-	private Date issueDate;
-	private Date returnDate;
-	private boolean inUse;
-	
-	public BooksInUse() {
-		
-	}
-	
-	@Id
-	@GeneratedValue(generator="increment")
-	@GenericGenerator(name="increment", strategy="increment")
-	@Column(name="id")
-	public int getId() {
-		return id;
-	}
-	
-	@Column(name="Person_id")
-	public int getPersonId() {
-		return personId;
-	}
-	
-	@Column(name="Books_id")
-	public int getBooksId() {
-		return booksId;
-	}
-	
-	@Column(name="issue_date")
-	public Date getIssueDate() {
-		return issueDate;
-	}
-	
-	@Column(name="return_date")
-	public Date getReturnDate() {
-		return returnDate;
-	}
-	
-	@Column(name="inUse")
-	public boolean getInUse() {
-		return inUse;
-	}
+public class BooksInUse implements Serializable {
+
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id")
+        private int id;
+        
+        @ManyToOne(targetEntity = Person.class)
+        @JoinColumn(name = "pid", referencedColumnName = "pid")
+        private Person person;
+        
+        @ManyToOne(targetEntity = Book.class)
+        @JoinColumn(name = "bid", referencedColumnName = "bid")
+        private Book book;
+
+        @Temporal(value = TemporalType.DATE)
+        @Column(name = "issue_date")
+        private Date issueDate;
+        
+        @Temporal(value = TemporalType.DATE)
+        @Column(name = "return_date")
+        private Date returnDate;
+
+        
+
+        public BooksInUse() {
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public Person getPerson() {
+            return person;
+        }
+
+        public void setPerson(Person person) {
+            this.person = person;
+        }
+
+        public Book getBook() {
+            return book;
+        }
+
+        public void setBook(Book book) {
+            this.book = book;
+        }
+
+
+
+        public Date getIssueDate() {
+            return issueDate;
+        }
+
+        public void setIssueDate(Date issueDate) {
+            this.issueDate = issueDate;
+        }
+
+        public Date getReturnDate() {
+            return returnDate;
+        }
+
+        public void setReturnDate(Date returnDate) {
+            this.returnDate = returnDate;
+        }
+
+       
+
 	
 }
