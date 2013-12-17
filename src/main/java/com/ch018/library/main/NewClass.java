@@ -4,6 +4,7 @@
  */
 package com.ch018.library.main;
 
+import com.ch018.library.DAO.BookDAOImpl;
 import com.ch018.library.dao.PersonDaoImpl;
 import com.ch018.library.entity.Book;
 import com.ch018.library.entity.BooksInUse;
@@ -71,6 +72,9 @@ public class NewClass {
         }finally{
             session.close();
         }
+
+        }
+
                
         
         
@@ -78,4 +82,4 @@ public class NewClass {
         
     }
     
-}
+

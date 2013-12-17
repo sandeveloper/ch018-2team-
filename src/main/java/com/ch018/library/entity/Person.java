@@ -15,19 +15,15 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.ForeignKey;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 /**
  *
  * @author Edd Arazian
  */
+
+enum Roles{ROLE_ADMIN, ROLE_LIBRARIAN, ROLE_USER}
+
 @Entity
 @Table(name = "persons")
 public class Person implements Serializable {
@@ -48,7 +44,8 @@ public class Person implements Serializable {
     @Column(name = "password")
     private String password;
     
-    //!!!!Role
+    @Column(name = "prole")
+    private String prole;
     
     @Column(name = "cellphone")
     private String cellphone;
@@ -150,7 +147,15 @@ public class Person implements Serializable {
         this.sms = sms;
     }
 
+    public String getProle() {
+        return prole;
+    }
 
+    public void setProle(String prole) {
+        this.prole = Roles.valueOf(prole).toString();
+    }
+
+    
 
     public int getTimelyReturn() {
         return timelyReturn;
