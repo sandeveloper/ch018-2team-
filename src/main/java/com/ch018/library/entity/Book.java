@@ -39,6 +39,10 @@ public class Book implements Serializable{
         @Column(name="authors")
 	private String authors;
         
+        @ManyToOne()
+        @JoinColumn(name = "gid")
+        private Genre genre;
+        
         @Column(name="year_public")
 	private int year;
         
@@ -50,6 +54,9 @@ public class Book implements Serializable{
         
         @Column(name="description")
 	private String description;
+        
+        @Column(name = "bookcase")
+        private int bookcase;
         
         @Column(name="shelf")
 	private int shelf;
@@ -157,7 +164,24 @@ public class Book implements Serializable{
         this.personsUse = personsUse;
     }
 
-        
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
+    public int getBookcase() {
+        return bookcase;
+    }
+
+    public void setBookcase(int bookcase) {
+        this.bookcase = bookcase;
+    }
+
+       
+    
         
 
     
