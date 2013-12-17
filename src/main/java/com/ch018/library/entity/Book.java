@@ -2,6 +2,7 @@ package com.ch018.library.entity;
 
 import java.io.Serializable;
 import java.util.Set;
+import javax.persistence.CascadeType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,8 +15,13 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 
 @Entity
@@ -24,12 +30,8 @@ public class Book implements Serializable{
 	
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", unique = true, nullable = false)
-	private int id;
-        
-        @ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="bcid", nullable = false)
-	private Bookcase bookcase;
+	@Column(name = "bid", unique = true, nullable = false)
+	private int bId;
         
         @Column(name="title")
 	private String title;
@@ -65,16 +67,14 @@ public class Book implements Serializable{
 	public Book(Book b) {
 		title = b.getTitle();
 	}
-	
 
-	public int getId() {
-		return this.id;
-	}
-	
-	
-	public Bookcase getBookcase() {
-		return this.bookcase;
-	}
+        public int getbId() {
+            return bId;
+        }
+
+        public void setbId(int bId) {
+            this.bId = bId;
+        }
 	
 	
 	public String getTitle() {
@@ -117,14 +117,6 @@ public class Book implements Serializable{
         }
 	
 	
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	public void setBookcase(Bookcase bookcase) {
-		this.bookcase = bookcase;
-	}
-	
 	public void setTitle(String title) {
 		this.title = title;
 	}
@@ -164,6 +156,11 @@ public class Book implements Serializable{
     public void setPersonsUse(Set<Person> personsUse) {
         this.personsUse = personsUse;
     }
+
+        
+        
+
+    
         
         
 	
@@ -184,12 +181,12 @@ public class Book implements Serializable{
 	
 	@Override 
 	public int hashCode() {
-		return this.id;
+		return this.bId;
 	}
 
 	@Override
 	public String toString() {
-		return getId() + " " + getTitle() + " " + getAuthors() + " " + getYear();
+		return bId + " " + getTitle() + " " + getAuthors() + " " + getYear();
 	}
 
 	

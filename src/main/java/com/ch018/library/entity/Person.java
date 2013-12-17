@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,14 +15,15 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-import org.hibernate.annotations.ForeignKey;
 
 /**
  *
  * @author Edd Arazian
  */
+
+enum Roles{ROLE_ADMIN, ROLE_LIBRARIAN, ROLE_USER}
+
 @Entity
 @Table(name = "persons")
 public class Person implements Serializable {
@@ -42,10 +44,8 @@ public class Person implements Serializable {
     @Column(name = "password")
     private String password;
     
-    @ManyToOne()
-    @JoinColumn(name = "rid")
-    private PersonRole role;
-   
+    @Column(name = "prole")
+    private String prole;
     
     @Column(name = "cellphone")
     private String cellphone;
@@ -147,14 +147,15 @@ public class Person implements Serializable {
         this.sms = sms;
     }
 
-    public PersonRole getRole() {
-        return role;
+    public String getProle() {
+        return prole;
     }
 
-    public void setRole(PersonRole role) {
-        this.role = role;
+    public void setProle(String prole) {
+        this.prole = Roles.valueOf(prole).toString();
     }
 
+    
 
     public int getTimelyReturn() {
         return timelyReturn;
@@ -203,6 +204,11 @@ public class Person implements Serializable {
     public void setBooksInUse(Set<Book> booksInUse) {
         this.booksInUse = booksInUse;
     }
+    
+    
+    
+
+   
 
     
     

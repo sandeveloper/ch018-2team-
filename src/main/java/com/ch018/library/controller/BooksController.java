@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ch018.library.entity.Book;
-import com.ch018.library.entity.Bookcase;
 import com.ch018.library.service.BookService;
-import com.ch018.library.service.BookcaseService;
 
 /**
  * 
@@ -27,8 +25,7 @@ public class BooksController {
 	@Autowired
 	BookService bookService;
 	
-	@Autowired
-	BookcaseService bookcaseService;
+
 	
 	@RequestMapping(value = "/books")
 	public ModelAndView booksList() {

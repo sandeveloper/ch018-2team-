@@ -4,6 +4,7 @@
  */
 package com.ch018.library.main;
 
+import com.ch018.library.DAO.BookDAOImpl;
 import com.ch018.library.dao.PersonDaoImpl;
 import com.ch018.library.entity.Book;
 import com.ch018.library.entity.BooksInUse;
@@ -22,7 +23,7 @@ public class NewClass {
     public static void main(String[] args) {
         
       
-        Session session = null;
+        /*Session session = null;
         
         Person person = new Person("gmail.com");
          
@@ -32,10 +33,14 @@ public class NewClass {
         Book book2 = new Book();
         book2.setTitle("Ruby");
         
+        person.getBooksInUse().add(book);
+        person.getBooksInUse().add(book2);
+        
         BooksInUse bis = new BooksInUse();
         bis.setPerson(person);
         bis.setBook(book);
         bis.setIssueDate(new Date());
+        
         
         BooksInUse bis1 = new BooksInUse();
         bis1.setPerson(person);
@@ -45,22 +50,36 @@ public class NewClass {
         try{
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(person);
+            
             session.save(book);
             session.save(book2);
             
+            session.save(person);
+            
+            
             session.save(bis);
             session.save(bis1);
+            //session.getTransaction().commit();
+            
+            
+            //session.beginTransaction();
+            
+            session.delete(bis1);
+            
             session.getTransaction().commit();
         }catch(Exception e){
             System.out.println(e);
         }finally{
-            session.close()
-                    ;
-        }
+            session.close();
+        }*/
                
         
+        Book book1 = new Book();
+        book1.setTitle("Java for super nuubs");
         
+        BookDAOImpl bookDAO = new BookDAOImpl();
+        
+        bookDAO.addBook(book1);
         
         
     }
