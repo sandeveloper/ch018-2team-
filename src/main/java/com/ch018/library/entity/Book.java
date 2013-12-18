@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
@@ -57,9 +58,13 @@ public class Book implements Serializable{
 	private String description;
         
         @Column(name = "bookcase")
+        //@OneToOne(targetEntity = BookCase.class)
+        //@JoinColumn(name = "caseid", referencedColumnName = "id")
         private int bookcase;
         
         @Column(name="shelf")
+        //@OneToOne(targetEntity = BookCase.class)
+        //@JoinColumn(name = "shelfid", referencedColumnName = "shelfid")
 	private int shelf;
         
         @Column(name="term")

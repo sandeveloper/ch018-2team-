@@ -6,6 +6,8 @@ package com.ch018.library.main;
 
 import com.ch018.library.DAO.BookDAO;
 import com.ch018.library.DAO.BookDAOImpl;
+import com.ch018.library.DAO.BooksInUseDao;
+import com.ch018.library.DAO.BooksInUseDaoImpl;
 import com.ch018.library.DAO.GenreDao;
 import com.ch018.library.DAO.GenreDaoImpl;
 import com.ch018.library.dao.PersonDaoImpl;
@@ -44,6 +46,7 @@ public class NewClass {
     public void foo() {
         BookDAO bdao = new BookDAOImpl();
         GenreDao gdao = new GenreDaoImpl();
+        BooksInUseDao biudao = new BooksInUseDaoImpl();
         Session session = null;
         
         Person person = new Person("gmail.com");
@@ -75,13 +78,13 @@ public class NewClass {
         BooksInUse bis = new BooksInUse();
         bis.setPerson(person);
         bis.setBook(book);
-        bis.setIssueDate(new Date());
+        bis.setReturnDate(new Date());
         
         
         BooksInUse bis1 = new BooksInUse();
         bis1.setPerson(person);
         bis1.setBook(book2);
-        bis1.setIssueDate(new Date());
+        bis1.setReturnDate(new Date());
         
         try{
             System.out.println("THERE");
@@ -111,7 +114,13 @@ public class NewClass {
             
             session.getTransaction().commit();
             
-            System.out.println(gdao.getByDescription("BrainFuck"));
+            /*BooksInUse bis3 = new BooksInUse();
+            bis3.setPerson(person);
+            bis3.setBook(book4);*/
+            Person p2 = new Person();
+            
+            
+            System.out.println(biudao.getBooksInUseByPerson(p2));
             
         }catch(Exception e){
             System.out.println(e);
