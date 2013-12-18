@@ -10,11 +10,13 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Edd Arazian
  */
+@Repository
 public class GenreDaoImpl implements GenreDao {
 
     static Logger log = LogManager.getLogger(GenreDaoImpl.class);

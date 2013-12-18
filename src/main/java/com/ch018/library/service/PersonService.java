@@ -2,19 +2,18 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ch018.library.dao;
+package com.ch018.library.service;
 
 import com.ch018.library.entity.Person;
 import java.util.List;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Edd Arazian
  */
-@Component
-public interface PersonDao {
+@Service
+public interface PersonService {
     
     void save(Person person);
     void delete(int id);

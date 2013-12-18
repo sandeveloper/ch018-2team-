@@ -2,21 +2,21 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ch018.library.DAO;
+package com.ch018.library.service;
 
 import com.ch018.library.entity.Book;
 import com.ch018.library.entity.BooksInUse;
 import com.ch018.library.entity.Person;
 import java.util.Date;
 import java.util.List;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Edd Arazian
  */
-@Repository
-public interface BooksInUseDao {
+@Service
+public interface BookInUseService {
     
     void save(BooksInUse booksInUse);
     void delete(BooksInUse booksInUse);

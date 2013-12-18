@@ -32,6 +32,6 @@ public class BooksController {
 		
 		
 		
-		return new ModelAndView("books", "books", bookService.getAllBooks());
+		return new ModelAndView("books", "books", bookService.getAll());
 	}
 }

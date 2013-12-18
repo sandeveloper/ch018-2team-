@@ -14,7 +14,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 @ComponentScan(basePackages = "com.ch018.library")
 @Configuration
-@ImportResource("classpath:hibernate.cfg.xml")
+//@ImportResource("classpath:hibernate.cfg.xml")
 public class MvcConfiguration extends WebMvcConfigurerAdapter {
 	@Bean
     public ViewResolver getViewResolver(){

@@ -12,6 +12,7 @@ import org.apache.logging.log4j.core.Logger;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 /**
  *
@@ -217,7 +218,7 @@ public class PersonDaoImpl implements PersonDao {
     }
 
     @Override
-    public List<Person> getByRole(int role) {
+    public List<Person> getByRole(String role) {
         Session session = null;
         List<Person> persons = null;
         try {
