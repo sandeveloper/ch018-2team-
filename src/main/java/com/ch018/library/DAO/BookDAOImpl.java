@@ -10,22 +10,35 @@ import org.springframework.stereotype.Repository;
 import com.ch018.library.entity.Book;
 import com.ch018.library.entity.Genre;
 import com.ch018.library.util.HibernateUtil;
+import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import sun.java2d.loops.DrawGlyphListAA;
 
 @Repository
+
 public class BookDAOImpl implements BookDAO {
 
 
-	
+
+    @Autowired
+    SessionFactory factory;
+    
     static Logger log = LogManager.getLogger(BookDAOImpl.class);
 
         
-
+    @Transactional
     @Override
     public void save(Book book) {
-        Session session = null;
+       
+        try{
+            factory.openSession().save(book);
+        }catch(Exception e){
+            log.error(e);
+        }
+        /* Session session = null;
         try{
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
@@ -39,7 +52,7 @@ public class BookDAOImpl implements BookDAO {
             }catch(Exception e){
                 log.error(e);
             }
-        }
+        }*/
     }
 
     @Override

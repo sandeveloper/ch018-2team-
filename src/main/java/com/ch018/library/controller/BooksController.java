@@ -25,12 +25,14 @@ public class BooksController {
 	
 
     @Autowired
-    BookDAO bDao;
+    BookService bServ;
 	
 	@RequestMapping(value = "/books")
 	public ModelAndView booksList() {
-		
-		List<Book> books = bDao.getAll();
+		Book b = new Book();
+                b.setTitle("Python");
+                bServ.save(b);
+		List<Book> books = bServ.getAll();
 		
 		return new ModelAndView("books", "books", books);
 	}
