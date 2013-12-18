@@ -58,7 +58,24 @@ public class Genre implements Serializable {
         this.description = description;
     }
     
+    @Override
+    public boolean equals(Object other) {
+        if (other == null) return false;
+        if (other == this) return true;
+        if (!(other instanceof Genre))return false;
+        Genre otherGenre = (Genre) other;
+        return description.equals(otherGenre.getDescription());
+    }
     
+    @Override 
+    public int hashCode() {
+        return this.description.hashCode();
+    }
+    
+    @Override
+    public String toString() {
+        return id + " " + description;
+    }
     
     
 }

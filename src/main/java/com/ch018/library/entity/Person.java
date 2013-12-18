@@ -221,6 +221,11 @@ public class Person implements Serializable {
         return email.equals(otherPerson.getEmail());
     }
     
+    @Override 
+    public int hashCode() {
+        return this.email.hashCode();
+    }
+    
     @Override
     public String toString() {
         return this.pid + " " + " " + email;

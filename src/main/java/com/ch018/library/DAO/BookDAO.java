@@ -5,7 +5,7 @@ import java.util.List;
 
 
 import com.ch018.library.entity.Book;
-import org.springframework.stereotype.Component;
+import com.ch018.library.entity.Genre;
 import org.springframework.stereotype.Repository;
 @Repository
 public interface BookDAO {
@@ -17,4 +17,7 @@ public interface BookDAO {
 	List<Book> getBooksByTitle(String title);
 	List<Book> getBooksByAuthors(String authors);
 	List<Book> getBooksByYear(int year);
+        List<Book> getBooksByPublisher(String publisher);
+        List<Book> getBooksByPagesEq(int pages);
+        List<Book> getBooksByGenre(Genre genre);
 }

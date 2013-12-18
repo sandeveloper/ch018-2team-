@@ -47,8 +47,8 @@ public class Book implements Serializable{
         @Column(name="year_public")
 	private int year;
         
-        @Column(name="publication")
-	private String publication;
+        @Column(name="publisher")
+	private String publisher;
         
         @Column(name="pages")
 	private int pages;
@@ -100,8 +100,8 @@ public class Book implements Serializable{
 	}
 	
 	
-	public String getPublication() {
-		return publication;
+	public String getPublisher() {
+		return publisher;
 	}
 	
 	
@@ -137,8 +137,8 @@ public class Book implements Serializable{
 		this.year = year;
 	}
 	
-	public void setPublication(String publication) {
-		this.publication = publication;
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
 	}
 	
 	public void setPages(int pages) {
@@ -198,7 +198,7 @@ public class Book implements Serializable{
 		}
 		if (this.title.equals(((Book) obj).getTitle())
 				&& this.getAuthors().equals(((Book) obj).getAuthors())
-				&& this.getPublication().equals(((Book) obj).getPublication())) {
+				&& this.getPublisher().equals(((Book) obj).getPublisher())) {
 			return true;
 		}
 		return false;

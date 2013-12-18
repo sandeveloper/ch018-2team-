@@ -6,6 +6,8 @@ package com.ch018.library.main;
 
 import com.ch018.library.DAO.BookDAO;
 import com.ch018.library.DAO.BookDAOImpl;
+import com.ch018.library.DAO.GenreDao;
+import com.ch018.library.DAO.GenreDaoImpl;
 import com.ch018.library.dao.PersonDaoImpl;
 import com.ch018.library.entity.Book;
 import com.ch018.library.entity.BooksInUse;
@@ -41,7 +43,7 @@ public class NewClass {
     
     public void foo() {
         BookDAO bdao = new BookDAOImpl();
-        
+        GenreDao gdao = new GenreDaoImpl();
         Session session = null;
         
         Person person = new Person("gmail.com");
@@ -109,7 +111,7 @@ public class NewClass {
             
             session.getTransaction().commit();
             
-            System.out.println(bdao.getAll());
+            System.out.println(gdao.getByDescription("BrainFuck"));
             
         }catch(Exception e){
             System.out.println(e);
