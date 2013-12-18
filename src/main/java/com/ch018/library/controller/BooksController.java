@@ -22,8 +22,8 @@ import com.ch018.library.service.BookService;
 @Controller
 public class BooksController {
 	
-	@Autowired
-	BookService bookService;
+	//@Autowired
+	//BookService bookService;
 	
 
 	
@@ -32,6 +32,6 @@ public class BooksController {
 		
 		
 		
-		return new ModelAndView("books", "books", bookService.getAll());
+		return new ModelAndView("books", "books", "123");
 	}
 }

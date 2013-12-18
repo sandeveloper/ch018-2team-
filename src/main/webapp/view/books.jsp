@@ -18,18 +18,7 @@
 			<td>Publication</td>
 			<td>Year</td>
 		</tr>
-	</thead>
-	<c:forEach items="${books}" var="book">
-		<tr>
-			<td>${book.id}</td>
-			<td><c:out value="${book.title}" escapeXml="true"/></td>
-			<td><c:out value="${book.authors}" escapeXml="true"/></td>
-			<td>${book.publication}</td>
-			<td>${book.year}</td>
-			<td><a href="<c:url value="/editbook?id=${book.id}"/>">Edit</a></td>
-			<td><a href="<c:url value="/deletebook?id=${book.id}"/>">Delete</a></td>
-		</tr>
-	</c:forEach>
+        </thead>
 </table>
 </body>
 </html>

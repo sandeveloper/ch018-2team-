@@ -10,6 +10,7 @@ import com.ch018.library.DAO.BooksInUseDao;
 import com.ch018.library.DAO.BooksInUseDaoImpl;
 import com.ch018.library.DAO.GenreDao;
 import com.ch018.library.DAO.GenreDaoImpl;
+import com.ch018.library.dao.PersonDao;
 import com.ch018.library.dao.PersonDaoImpl;
 import com.ch018.library.entity.Book;
 import com.ch018.library.entity.BooksInUse;
@@ -47,6 +48,7 @@ public class NewClass {
         BookDAO bdao = new BookDAOImpl();
         GenreDao gdao = new GenreDaoImpl();
         BooksInUseDao biudao = new BooksInUseDaoImpl();
+        PersonDao pdao = new PersonDaoImpl();
         Session session = null;
         
         Person person = new Person("gmail.com");
@@ -120,7 +122,7 @@ public class NewClass {
             Person p2 = new Person();
             
             
-            System.out.println(biudao.getBooksInUseByPerson(p2));
+            System.out.println(pdao.getAll());
             
         }catch(Exception e){
             System.out.println(e);
