@@ -9,16 +9,8 @@
 <title>Books</title>
 </head>
 <body>
-<table>
-	<thead>
-		<tr>
-			<td>ID</td>
-			<td>Title</td>
-			<td>Authors</td>
-			<td>Publication</td>
-			<td>Year</td>
-		</tr>
-        </thead>
-</table>
+    <c:forEach var="book" items="${books}">
+        <p>${book.getTitle()}
+    </c:forEach>
 </body>
 </html>

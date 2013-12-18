@@ -35,7 +35,7 @@ public class Book implements Serializable{
 	@Column(name = "bid", unique = true, nullable = false)
 	private int bId;
         
-        @Column(name="title")
+        @Column(name="title", unique = true)
 	private String title;
         
         @Column(name="authors")
