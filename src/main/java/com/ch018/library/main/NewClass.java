@@ -4,6 +4,7 @@
  */
 package com.ch018.library.main;
 
+import com.ch018.library.DAO.BookDAO;
 import com.ch018.library.DAO.BookDAOImpl;
 import com.ch018.library.dao.PersonDaoImpl;
 import com.ch018.library.entity.Book;
@@ -13,6 +14,11 @@ import com.ch018.library.entity.Person;
 import com.ch018.library.util.HibernateUtil;
 import java.util.Date;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import sun.applet.Main;
 
 
 /**
@@ -21,9 +27,21 @@ import org.hibernate.Session;
  */
 public class NewClass {
     
+    //@Autowired
+     
+    
     public static void main(String[] args) {
         
+        
+        
+        NewClass m = new NewClass();
+        m.foo();
       
+    }
+    
+    public void foo() {
+        BookDAO bdao = new BookDAOImpl();
+        
         Session session = null;
         
         Person person = new Person("gmail.com");
@@ -64,6 +82,7 @@ public class NewClass {
         bis1.setIssueDate(new Date());
         
         try{
+            System.out.println("THERE");
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             
@@ -89,6 +108,9 @@ public class NewClass {
             session.delete(bis1);
             
             session.getTransaction().commit();
+            
+            System.out.println(bdao.getAll());
+            
         }catch(Exception e){
             System.out.println(e);
         }finally{
@@ -96,12 +118,13 @@ public class NewClass {
         }
 
         }
+    }
 
                
         
         
         
         
-    }
+    
     
 
