@@ -2,10 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ch018.library.dao;
+package com.ch018.library.DAO;
 
-import com.ch018.library.util.HibernateUtil;
+
 import com.ch018.library.entity.Person;
+import com.ch018.library.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.logging.log4j.core.Logger;

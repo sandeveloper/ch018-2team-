@@ -25,7 +25,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.stereotype.Component;
 
-@Component
+
 @Entity
 @Table(name="books")
 public class Book implements Serializable{

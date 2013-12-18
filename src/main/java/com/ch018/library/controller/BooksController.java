@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ch018.library.entity.Book;
 import com.ch018.library.service.BookService;
-
 /**
  * 
  * @author Yurik Mikhaletskiy
@@ -21,9 +20,6 @@ import com.ch018.library.service.BookService;
 
 @Controller
 public class BooksController {
-	
-	//@Autowired
-	//BookService bookService;
 	
 
 	
