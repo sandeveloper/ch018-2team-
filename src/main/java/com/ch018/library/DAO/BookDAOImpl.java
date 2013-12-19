@@ -29,7 +29,6 @@ public class BookDAOImpl implements BookDAO {
     static Logger log = LogManager.getLogger(BookDAOImpl.class);
 
         
-    @Transactional
     @Override
     public void save(Book book) {
             factory.openSession().save(book);

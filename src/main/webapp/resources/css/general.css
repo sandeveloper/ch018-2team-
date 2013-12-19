@@ -90,3 +90,13 @@ body{
     background-color: forestgreen;
     color: white;
 }
+
+#add_book input{
+    width: 150px;
+    height: 20px;
+    border-radius: 10px;
+    display: list-item;
+}
+#add_book #inner{
+    margin-left: 50px;
+}

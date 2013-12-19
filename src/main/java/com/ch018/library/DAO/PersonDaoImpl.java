@@ -16,6 +16,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -29,6 +30,7 @@ public class PersonDaoImpl implements PersonDao {
     SessionFactory factory;
     
     @Override
+    @Transactional
     public void save(Person person) {
         factory.openSession().save(person);
     }

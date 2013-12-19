@@ -142,7 +142,7 @@ public class Book implements Serializable{
 	}
 	
 	public void setDescription(String description) {
-		this.description = description;
+		this.description = description.substring(0, 254);
 	}
 	
 	public void setShelf(int shelf) {

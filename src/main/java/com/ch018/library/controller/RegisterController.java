@@ -34,9 +34,10 @@ public class RegisterController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ModelAndView addUser(@ModelAttribute Person person){
         try{
+            System.out.println("+++++++++============");
             pService.save(person);
         }catch(Exception e){
-            System.out.println(e);
+            System.out.println(e + "+++++++++============");
             log.error(e);
             return new ModelAndView("unsuccessful");
         }
