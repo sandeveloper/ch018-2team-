@@ -23,7 +23,7 @@ public class Book implements Serializable{
 	@Column(name = "bid", unique = true, nullable = false)
 	private int bId;
         
-        @Column(name="title", unique = true)
+        @Column(name="title", unique = true, nullable = false)
 	private String title;
         
         @Column(name="authors")
@@ -57,6 +57,9 @@ public class Book implements Serializable{
         
         @Column(name="term")
 	private int term;
+        
+        @Column(name = "img")
+        private String img;
         
         @OneToMany(targetEntity = BooksInUse.class, mappedBy = "book")
 	private Set<Person> personsUse;
@@ -172,6 +175,14 @@ public class Book implements Serializable{
 
     public void setBookcase(int bookcase) {
         this.bookcase = bookcase;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
        

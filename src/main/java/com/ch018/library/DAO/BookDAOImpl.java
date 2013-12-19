@@ -32,27 +32,7 @@ public class BookDAOImpl implements BookDAO {
     @Transactional
     @Override
     public void save(Book book) {
-       
-        try{
             factory.openSession().save(book);
-        }catch(Exception e){
-            log.error(e);
-        }
-        /* Session session = null;
-        try{
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.save(book);
-            session.getTransaction().commit();
-        }catch(Exception e){
-            log.error(e);
-        }finally{
-            try{
-                session.close();
-            }catch(Exception e){
-                log.error(e);
-            }
-        }*/
     }
 
     @Override

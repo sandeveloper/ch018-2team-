@@ -5,6 +5,7 @@
 package com.ch018.library.service;
 
 //import com.ch018.library.dao.PersonDao;
+import com.ch018.library.DAO.PersonDao;
 import com.ch018.library.entity.Person;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Service;
  * @author Edd Arazian
  */
 @Service
-public class PersonServiceImpl {/*implements PersonService {
+public class PersonServiceImpl implements PersonService {
     
     @Autowired
     PersonDao pDao;
@@ -82,5 +83,5 @@ public class PersonServiceImpl {/*implements PersonService {
     
     
     
-}*/
 }
+

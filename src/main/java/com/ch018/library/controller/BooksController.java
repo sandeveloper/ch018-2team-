@@ -21,19 +21,16 @@ import java.util.List;
  */
 
 @Controller
+@RequestMapping(value = "/books")
 public class BooksController {
 	
 
     @Autowired
     BookService bServ;
 	
-	@RequestMapping(value = "/books")
+	@RequestMapping(value = "/")
 	public ModelAndView booksList() {
-		Book b = new Book();
-                b.setTitle("Python");
-                bServ.save(b);
 		List<Book> books = bServ.getAll();
-		
 		return new ModelAndView("books", "books", books);
 	}
 }
