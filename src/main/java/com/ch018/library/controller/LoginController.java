@@ -28,24 +28,24 @@ public class LoginController {
     BookService bService;
     
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ModelAndView loginProcess(HttpServletRequest request, Model model){
+    public String loginProcess(HttpServletRequest request, Model model){
         
-        /*String email = request.getParameter("email");
+        String email = request.getParameter("email");
         String password = request.getParameter("password");
         Person person = pService.getByEmail(email);
         if(person != null && person.getPassword().equals(password)){
-            return new ModelAndView("home", "person", person);
+            model.addAttribute("books", bService.getAll());
+            model.addAttribute("person", person);
+            return "home";
         }else
-            return new ModelAndView("unsuccessful");*/
-        
-        return new ModelAndView("home", "books", bService.getAll());
+            return "unsuccessful";
         
         
     }
     
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView loginProcess(){
-        return new ModelAndView("home", "books", bService.getAll());
+        return new ModelAndView("index");
     }
     
 }

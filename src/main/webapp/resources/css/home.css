@@ -36,7 +36,7 @@ body{
 #user_menu ul li{
     display: inline;
     margin-right: 5px;
-    font-size: 1.5em;
+    font-size: 1em;
 }
 #home_main{
     clear: both;
