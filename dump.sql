@@ -35,11 +35,13 @@ CREATE TABLE `books` (
   `title` varchar(255) NOT NULL,
   `year_public` int(11) DEFAULT NULL,
   `gid` int(11) DEFAULT NULL,
+  `cur_quantity` int(11) DEFAULT NULL,
+  `gen_quantity` int(11) DEFAULT NULL,
   PRIMARY KEY (`bid`),
   UNIQUE KEY `UK_5mtto2jcmfrwfg0p1ui8mnweu` (`title`),
   KEY `FK_k00r52dx96mgbrvv8i05saupq` (`gid`),
   CONSTRAINT `FK_k00r52dx96mgbrvv8i05saupq` FOREIGN KEY (`gid`) REFERENCES `genres` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +50,7 @@ CREATE TABLE `books` (
 
 LOCK TABLES `books` WRITE;
 /*!40000 ALTER TABLE `books` DISABLE KEYS */;
-INSERT INTO `books` VALUES (2,'Ben Klein',0,'Grails is a full-stack web development framework that enables you to build complete web applications in a fraction of the time and with less code than other frameworks. Grails uses the principle of convention over configuration and the dynamic Groovy pro','http://akamaicovers.oreilly.com/images/9781937785772/lrg.jpg',222,'Pragmatic Bookshelf',0,0,'Grails 2: A Quick-Start Guide',2013,4),(3,'Ryan Neufeld',0,'With Early Release ebooks, you get books in their earliest form ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ the author\'s raw and unedited content as he or she writes ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ so you can take advantage of these','http://akamaicovers.oreilly.com/images/0636920029786/rc_lrg.jpg',650,'O\'Reilly Media',0,0,'Clojure Cookbook',2013,4),(4,' Bill Burke',0,'Learn how to design and develop distributed web services in Java, using RESTful architectural principles and the JAX-RS 2.0 specification in Java EE 7. By focusing on implementation rather than theory, this hands-on reference demonstrates how easy it is ','http://akamaicovers.oreilly.com/images/0636920028925/lrg.jpg',392,'O\'Reilly Media',0,0,'RESTful Java with JAX-RS 2.0, 2nd Edition',2013,4),(5,'Stephen Gallaghe',0,'From a basement office in Londonâs notorious Bethlehem Hospital, former policeman and Pinkerton agent Sebastian Becker is sent to interview Sir Owain Lancaster at his country estate. They wealthy industrialist returned alone from a disastrous scientifi','http://ecx.images-amazon.com/images/I/41ldammVtNL._SY344_PJlook-inside-v2,TopRight,1,0_SH20_BO1,204,203,200_.jpg',20,'publish',0,0,' The Bedlam Detective: A Novel',2013,9);
+INSERT INTO `books` VALUES (2,'Ben Klein',0,'Grails is a full-stack web development framework that enables you to build complete web applications in a fraction of the time and with less code than other frameworks. Grails uses the principle of convention over configuration and the dynamic Groovy pro','http://akamaicovers.oreilly.com/images/9781937785772/lrg.jpg',222,'Pragmatic Bookshelf',0,0,'Grails 2: A Quick-Start Guide',2013,4,5,10),(3,'Ryan Neufeld',0,'With Early Release ebooks, you get books in their earliest form ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ the author\'s raw and unedited content as he or she writes ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ so you can take advantage of these','http://akamaicovers.oreilly.com/images/0636920029786/rc_lrg.jpg',650,'O\'Reilly Media',0,0,'Clojure Cookbook',2013,4,0,10),(4,' Bill Burke',0,'Learn how to design and develop distributed web services in Java, using RESTful architectural principles and the JAX-RS 2.0 specification in Java EE 7. By focusing on implementation rather than theory, this hands-on reference demonstrates how easy it is ','http://akamaicovers.oreilly.com/images/0636920028925/lrg.jpg',392,'O\'Reilly Media',0,0,'RESTful Java with JAX-RS 2.0, 2nd Edition',2013,4,0,10),(5,'Stephen Gallaghe',0,'From a basement office in Londonâs notorious Bethlehem Hospital, former policeman and Pinkerton agent Sebastian Becker is sent to interview Sir Owain Lancaster at his country estate. They wealthy industrialist returned alone from a disastrous scientifi','http://ecx.images-amazon.com/images/I/41ldammVtNL._SY344_PJlook-inside-v2,TopRight,1,0_SH20_BO1,204,203,200_.jpg',20,'publish',0,0,' The Bedlam Detective: A Novel',2013,9,0,10);
 /*!40000 ALTER TABLE `books` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -68,9 +70,9 @@ CREATE TABLE `booksinuse` (
   PRIMARY KEY (`id`),
   KEY `FK_3ft6fv08l2vu9djpg3ltjuhn6` (`bid`),
   KEY `FK_ovmx9ggxtncwm3ad002e6ogny` (`pid`),
-  CONSTRAINT `FK_ovmx9ggxtncwm3ad002e6ogny` FOREIGN KEY (`pid`) REFERENCES `persons` (`pid`),
-  CONSTRAINT `FK_3ft6fv08l2vu9djpg3ltjuhn6` FOREIGN KEY (`bid`) REFERENCES `books` (`bid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `FK_3ft6fv08l2vu9djpg3ltjuhn6` FOREIGN KEY (`bid`) REFERENCES `books` (`bid`),
+  CONSTRAINT `FK_ovmx9ggxtncwm3ad002e6ogny` FOREIGN KEY (`pid`) REFERENCES `persons` (`pid`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,6 +81,7 @@ CREATE TABLE `booksinuse` (
 
 LOCK TABLES `booksinuse` WRITE;
 /*!40000 ALTER TABLE `booksinuse` DISABLE KEYS */;
+INSERT INTO `booksinuse` VALUES (1,'2013-12-20','2014-01-03',3,1),(2,'2013-12-20','2014-01-03',4,1),(6,'2013-12-20','2014-01-03',2,1);
 /*!40000 ALTER TABLE `booksinuse` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,4 +155,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-12-20  3:13:55
+-- Dump completed on 2013-12-20 13:07:56

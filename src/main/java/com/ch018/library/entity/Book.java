@@ -61,6 +61,12 @@ public class Book implements Serializable{
         @Column(name = "img")
         private String img;
         
+        @Column(name = "cur_quantity")
+        private int currentQuantity;
+        
+        @Column(name = "gen_quantity")
+        private int generalQuantity;
+        
         @OneToMany(targetEntity = BooksInUse.class, mappedBy = "book")
 	private Set<Person> personsUse;
 	
@@ -185,7 +191,22 @@ public class Book implements Serializable{
         this.img = img;
     }
 
-       
+     public int getCurrentQuantity() {
+        return currentQuantity;
+    }
+
+    public void setCurrentQuantity(int currentQuantity) {
+        this.currentQuantity = currentQuantity;
+    }
+
+    public int getGeneralQuantity() {
+        return generalQuantity;
+    }
+
+    public void setGeneralQuantity(int generalQuantity) {
+        this.generalQuantity = generalQuantity;
+    }
+        
     
         
 

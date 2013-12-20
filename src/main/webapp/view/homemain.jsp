@@ -14,7 +14,7 @@
                     <span>${book.getTitle()} by ${book.getAuthors()}</span>
                 </div>
                 <div class="book_order">
-                    <a class="button" href="<c:url value="/order/add?bookid=${book.getbId()}&person=${person.getPid()}" />">Order</a>
+                    <a class="button" href="<c:url value="/order?bookid=${book.getbId()}&personid=${person.getPid()}" />">Order</a>
                 </div>
             </div>
             </c:forEach>
